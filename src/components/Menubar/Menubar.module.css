@@ -1,0 +1,11 @@
+.Menubar {
+  background-color: #005555;
+  margin: 0;
+  overflow: hidden;
+}
+
+.Title {
+  color: white;
+  display: block;
+  padding: 0.5em 1em;
+}

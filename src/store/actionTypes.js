@@ -1,0 +1,2 @@
+export const SET_ALGORITHM = 'SET_ALGORITHM';
+export const GENERATE_LIST = 'GENERATE_LIST';

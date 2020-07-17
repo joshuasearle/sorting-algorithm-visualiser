@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import classes from './Column.module.css';
 
 const Column = ({ value, width, left, color }) => {
-  console.log(left);
   const styles = {
     backgroundColor: color,
     width: `${width}px`,

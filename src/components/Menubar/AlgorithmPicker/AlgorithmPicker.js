@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import DropdownMenu from '../../inputs/DropdownMenu/DropdownMenu';
 import FormLabel from '../../inputs/FormLabel/FormLabel';
 import * as actionCreators from '../../../store/actionCreators';
+import sortingAlgs from '../../../sorting-algs/sorting-main';
 
 const AlgorithmPicker = () => {
   const algorithm = useSelector((state) => state.algorithm);
@@ -13,7 +14,7 @@ const AlgorithmPicker = () => {
     dispatch(actionCreators.setAlgorithm(event.target.value));
   };
 
-  const options = ['selection-sort', 'insertion-sort'];
+  const options = Object.keys(sortingAlgs);
 
   return (
     <div>

@@ -1,9 +1,13 @@
 import * as actionTypes from './actionTypes';
 import { objectCombiner } from './objectCombiner';
 
+const randomListGenerator = (length) => {
+  return [...Array.from(Array(length), () => Math.random())];
+};
+
 const initialState = {
   algorithm: 'selection-sort',
-  currentList: [],
+  currentList: randomListGenerator(20),
 };
 
 const setAlgorithm = (state, action) => {
@@ -12,7 +16,7 @@ const setAlgorithm = (state, action) => {
 
 const generateList = (state, action) => {
   const newListLength = Math.max(0, Math.min(100, action.length));
-  const newList = [...Array.from(Array(newListLength), () => Math.random())];
+  const newList = randomListGenerator(newListLength);
   return objectCombiner(state, { currentList: newList });
 };
 

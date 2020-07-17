@@ -1,0 +1,7 @@
+.Columns {
+  position: relative;
+  padding: 2em 0;
+  display: flex;
+  align-content: flex-end;
+  height: 600px;
+}

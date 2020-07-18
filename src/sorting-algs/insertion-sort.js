@@ -2,28 +2,54 @@ import * as actionCreators from '../store/actionCreators';
 
 const insertionSort = (arr) => {
   const animations = [];
-  animations.push(
-    // color all black
-    actionCreators.highlightElements(
-      [...Array.from(Array(arr.length), (_, idx) => idx)],
-      'black'
-    )
-  );
+  const highlights = arr.map((item, idx) => ({
+    idx: idx,
+    color: 'black',
+  }));
+  animations.push(actionCreators.highlightElements(highlights));
   const result = [...arr];
   for (let i = 0; i < arr.length; i++) {
-    animations.push(actionCreators.highlightElements([i], 'green'));
+    animations.push(
+      actionCreators.highlightElements([{ idx: i, color: 'green' }])
+    );
     let j = i - 1;
+    animations.push(
+      actionCreators.highlightElements([{ idx: j, color: 'green' }])
+    );
     while (j >= 0 && result[j + 1].value < result[j].value) {
-      animations.push(actionCreators.highlightElements([j], 'green'));
       let tmp = result[j];
       result[j] = result[j + 1];
       result[j + 1] = tmp;
-      animations.push(actionCreators.highlightElements([j], 'black'));
       animations.push(actionCreators.swapElements(j, j + 1));
+      animations.push(
+        actionCreators.highlightElements([
+          { idx: j + 1, color: 'black' },
+          { idx: j - 1, color: 'green' },
+        ])
+      );
+
       j -= 1;
     }
-    animations.push(actionCreators.highlightElements([j + 1, j], 'black'));
+    animations.push(
+      actionCreators.highlightElements([
+        { idx: j, color: 'black' },
+        { idx: j + 1, color: 'black' },
+      ])
+    );
   }
+
+  for (let i = 0; i < arr.length; i++) {
+    animations.push(
+      actionCreators.highlightElements([{ idx: i, color: 'green' }])
+    );
+  }
+
+  for (let i = arr.length; i >= 0; i--) {
+    animations.push(
+      actionCreators.highlightElements([{ idx: i, color: 'black' }])
+    );
+  }
+
   return animations;
 };
 

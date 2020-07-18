@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import { act } from 'react-dom/test-utils';
+import sortingAlgs from '../sorting-algs/sorting-main';
 
 export const generateList = (length) => {
   return {
@@ -28,5 +28,13 @@ export const highlightElements = (color, idxs) => {
     type: actionTypes.HIGHLIGH_ELEMENTS,
     color: color,
     idxs: idxs,
+  };
+};
+
+export const visualise = () => {
+  return (dispatch, getState) => {
+    const algorithm = sortingAlgs[getState().algorithm];
+    const animationActions = algorithm(getState().currentList);
+    console.log(animationActions);
   };
 };

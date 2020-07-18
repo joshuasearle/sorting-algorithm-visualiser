@@ -22,16 +22,15 @@ const selectionSort = (arr) => {
       }
     }
     // swap elements we are swapping
-    animations.push(actionCreators.swapElements(i, minIdx))[
-      (result[minIdx], result[i])
-    ] = [result[i], result[minIdx]];
+    animations.push(actionCreators.swapElements(i, minIdx));
+    [result[minIdx], result[i]] = [result[i], result[minIdx]];
     // color the swapped elements black, as we are done with them for now
   }
   return animations;
+  // return result;
 };
 
-// const test = [3, 2, 4, 1];
-
+// const test = [{ value: 3 }, { value: 2 }, { value: 1 }, { value: 4 }];
 // console.log(selectionSort(test));
 
 export default selectionSort;

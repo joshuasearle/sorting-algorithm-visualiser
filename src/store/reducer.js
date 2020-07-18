@@ -13,6 +13,7 @@ const randomListGenerator = (length) => {
 const initialState = {
   algorithm: 'selection-sort',
   currentList: randomListGenerator(20),
+  interval: 10,
 };
 
 const setAlgorithm = (state, action) => {
@@ -41,6 +42,10 @@ const highlight = (state, action) => {
   return objectCombiner(state, { currentList: newList });
 };
 
+const setInterval = (state, action) => {
+  return objectCombiner(state, { interval: action.interval });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_ALGORITHM:
@@ -51,6 +56,8 @@ const reducer = (state = initialState, action) => {
       return swapElements(state, action);
     case actionTypes.HIGHLIGH_ELEMENTS:
       return highlight(state, action);
+    case actionTypes.SET_INTERVAL:
+      return setInterval(state, action);
     default:
       return state;
   }

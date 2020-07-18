@@ -15,6 +15,13 @@ export const setAlgorithm = (algorithm) => {
   };
 };
 
+export const setInterval = (interval) => {
+  return {
+    type: actionTypes.SET_INTERVAL,
+    interval: interval,
+  };
+};
+
 export const swapElements = (idx1, idx2) => {
   return {
     type: actionTypes.SWAP_ELEMENTS,
@@ -30,15 +37,19 @@ export const highlightElements = (idxColorMap) => {
   };
 };
 
-export const visualise = () => {
-  return (dispatch, getState) => {
-    const algorithm = sortingAlgs[getState().algorithm];
-    const animationActions = algorithm(getState().currentList);
-    for (let i = 0; i < animationActions.length; i++) {
-      let action = animationActions[i];
-      setTimeout(() => {
-        dispatch(action);
-      }, 10 * i);
-    }
-  };
-};
+// export const visualise = () => {
+//   return (dispatch, getState) => {
+//     const algorithm = sortingAlgs[getState().algorithm];
+//     const animationActions = algorithm(getState().currentList);
+//     let actionIdx = 0;
+//     const interval = setInterval(() => {
+//       // stop interval if end of animation list
+//       if (actionIdx === animationActions.length) {
+//         clearInterval(interval);
+//         return;
+//       }
+//       dispatch(animationActions[actionIdx]);
+//       actionIdx++;
+//     }, getState().interval);
+//   };
+// };

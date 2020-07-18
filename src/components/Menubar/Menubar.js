@@ -4,6 +4,7 @@ import classes from './Menubar.module.css';
 import AlgorithmPicker from './AlgorithmPicker/AlgorithmPicker';
 import ElementCountPicker from './ElementCountPicker/ElementCountPicker';
 import RunButton from './RunButton/RunButton';
+import SpeedPicker from './SpeedPicker/SpeedPicker';
 
 const Menubar = () => {
   return (
@@ -14,7 +15,9 @@ const Menubar = () => {
       </div>
       <div className={classes.ElementCountPicker}>
         <ElementCountPicker />
+        <SpeedPicker />
       </div>
+      <div className={classes.ElementCountPicker}></div>
       <div className={classes.RunButton}>
         <RunButton />
       </div>

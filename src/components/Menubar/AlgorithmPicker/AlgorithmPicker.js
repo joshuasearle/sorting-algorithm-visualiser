@@ -7,7 +7,10 @@ import * as actionCreators from '../../../store/actionCreators';
 import sortingAlgs from '../../../sorting-algs/sorting-main';
 
 const AlgorithmPicker = () => {
-  const algorithm = useSelector((state) => state.algorithm);
+  const [algorithm, visualising] = useSelector((state) => [
+    state.algorithm,
+    state.visualising,
+  ]);
   const dispatch = useDispatch();
 
   const algorithmChangeHandler = (event) => {
@@ -23,6 +26,7 @@ const AlgorithmPicker = () => {
         value={algorithm}
         options={options}
         onChange={algorithmChangeHandler}
+        disabled={visualising}
       />
     </div>
   );

@@ -1,5 +1,4 @@
 import * as actionTypes from './actionTypes';
-import sortingAlgs from '../sorting-algs/sorting-main';
 
 export const generateList = (length) => {
   return {
@@ -37,19 +36,6 @@ export const highlightElements = (idxColorMap) => {
   };
 };
 
-// export const visualise = () => {
-//   return (dispatch, getState) => {
-//     const algorithm = sortingAlgs[getState().algorithm];
-//     const animationActions = algorithm(getState().currentList);
-//     let actionIdx = 0;
-//     const interval = setInterval(() => {
-//       // stop interval if end of animation list
-//       if (actionIdx === animationActions.length) {
-//         clearInterval(interval);
-//         return;
-//       }
-//       dispatch(animationActions[actionIdx]);
-//       actionIdx++;
-//     }, getState().interval);
-//   };
-// };
+export const setVisualising = (visualising) => {
+  return { type: actionTypes.SET_VISUALISING, visualising: visualising };
+};

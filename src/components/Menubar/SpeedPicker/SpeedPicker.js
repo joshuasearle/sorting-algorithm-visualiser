@@ -2,21 +2,26 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import FormLabel from '../../inputs/FormLabel/FormLabel';
-import NumberInput from '../../inputs/NumberInput/NumberInput';
+import Slider from '../../inputs/Slider/Slider';
 import * as actionCreators from '../../../store/actionCreators';
 
 const ElementCountPicker = () => {
-  let interval = useSelector((state) => state.interval);
+  let interval = 1000 - useSelector((state) => state.interval);
   const dispatch = useDispatch();
 
   const intervalChangeHandler = (event) => {
-    dispatch(actionCreators.setInterval(event.target.value));
+    dispatch(actionCreators.setInterval(1000 - event.target.value));
   };
 
   return (
     <div>
-      <FormLabel>Interval (ms)</FormLabel>
-      <NumberInput value={interval} onChange={intervalChangeHandler} />
+      <FormLabel>Speed</FormLabel>
+      <Slider
+        min='1'
+        max='1000'
+        value={interval}
+        onChange={intervalChangeHandler}
+      />
     </div>
   );
 };

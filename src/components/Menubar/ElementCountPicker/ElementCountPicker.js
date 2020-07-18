@@ -6,7 +6,10 @@ import NumberInput from '../../inputs/NumberInput/NumberInput';
 import * as actionCreators from '../../../store/actionCreators';
 
 const ElementCountPicker = () => {
-  let elementCount = useSelector((state) => state.currentList.length);
+  let [elementCount, visualising] = useSelector((state) => [
+    state.currentList.length,
+    state.visualising,
+  ]);
   elementCount = elementCount === 0 ? '' : elementCount;
   const dispatch = useDispatch();
 
@@ -17,7 +20,11 @@ const ElementCountPicker = () => {
   return (
     <div>
       <FormLabel>Element Count</FormLabel>
-      <NumberInput value={elementCount} onChange={elementCountChangeHandler} />
+      <NumberInput
+        disabled={visualising}
+        value={elementCount}
+        onChange={elementCountChangeHandler}
+      />
     </div>
   );
 };

@@ -8,35 +8,32 @@ import * as actionCreators from '../../../store/actionCreators';
 
 const RunButton = () => {
   const dispatch = useDispatch();
-  const [currentList, algorithm, visualising] = useSelector((state) => [
+  const [currentList, algorithm] = useSelector((state) => [
     state.currentList,
     state.algorithm,
-    state.visualising,
   ]);
 
   const buttonPressHandler = () => {
+    dispatch(actionCreators.stopVisualisation());
     const alg = sortingAlgs[algorithm];
-    const animations = alg(currentList);
-    dispatch(actionCreators.setVisualising(true));
-    recursiveTimeout(animations, 0);
+    const visId = store.getState().nextVisId;
+    const animations = alg(currentList, visId);
+    dispatch(actionCreators.startVisualisation());
+    recursiveTimeout(animations, 0, visId);
   };
 
-  const recursiveTimeout = (actions, actionIdx) => {
+  const recursiveTimeout = (actions, actionIdx, visId) => {
     setTimeout(() => {
       dispatch(actions[actionIdx]);
       if (actionIdx + 1 === actions.length) {
-        dispatch(actionCreators.setVisualising(false));
+        dispatch(actionCreators.stopVisualisation(visId));
         return;
       }
-      recursiveTimeout(actions, actionIdx + 1);
+      recursiveTimeout(actions, actionIdx + 1, visId);
     }, store.getState().interval);
   };
 
-  return (
-    <Button disabled={visualising} onClick={buttonPressHandler}>
-      RUN SORT
-    </Button>
-  );
+  return <Button onClick={buttonPressHandler}>RUN SORT</Button>;
 };
 
 export default RunButton;

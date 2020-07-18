@@ -14,6 +14,7 @@ const AlgorithmPicker = () => {
   const dispatch = useDispatch();
 
   const algorithmChangeHandler = (event) => {
+    dispatch(actionCreators.stopVisualisation());
     dispatch(actionCreators.setAlgorithm(event.target.value));
   };
 

@@ -13,8 +13,9 @@ const randomListGenerator = (length) => {
 const initialState = {
   algorithm: 'selection-sort',
   currentList: randomListGenerator(20),
-  interval: 10,
-  visualising: false,
+  interval: 500,
+  nextVisId: 0,
+  currentVisId: null,
 };
 
 const setAlgorithm = (state, action) => {
@@ -28,6 +29,9 @@ const generateList = (state, action) => {
 };
 
 const swapElements = (state, action) => {
+  if (action.visId !== state.currentVisId) {
+    return state;
+  }
   const newList = [...state.currentList];
   const tmp = newList[action.idx1];
   newList[action.idx1] = newList[action.idx2];
@@ -36,6 +40,9 @@ const swapElements = (state, action) => {
 };
 
 const highlight = (state, action) => {
+  if (action.visId !== state.currentVisId) {
+    return state;
+  }
   const newList = [...state.currentList];
   for (let { idx, color } of action.idxColorMap) {
     newList[idx] = objectCombiner(newList[idx], { color: color });
@@ -47,8 +54,25 @@ const setInterval = (state, action) => {
   return objectCombiner(state, { interval: action.interval });
 };
 
-const setVisualising = (state, action) => {
-  return objectCombiner(state, { visualising: action.visualising });
+const startVisualisation = (state, action) => {
+  return objectCombiner(state, {
+    currentVisId: state.nextVisId,
+    nextVisId: state.nextVisId + 1,
+  });
+};
+
+const stopVisualisation = (state, action) => {
+  if (action.visId !== undefined && action.visId !== state.currentVisId) {
+    return state;
+  }
+  const newList = state.currentList.map((item) => ({
+    ...item,
+    color: 'black',
+  }));
+  return objectCombiner(state, {
+    currentVisId: null,
+    currentList: newList,
+  });
 };
 
 const reducer = (state = initialState, action) => {
@@ -63,8 +87,10 @@ const reducer = (state = initialState, action) => {
       return highlight(state, action);
     case actionTypes.SET_INTERVAL:
       return setInterval(state, action);
-    case actionTypes.SET_VISUALISING:
-      return setVisualising(state, action);
+    case actionTypes.START_VISUALISATION:
+      return startVisualisation(state, action);
+    case actionTypes.STOP_VISUALISATION:
+      return stopVisualisation(state, action);
     default:
       return state;
   }

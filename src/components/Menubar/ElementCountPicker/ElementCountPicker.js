@@ -14,6 +14,7 @@ const ElementCountPicker = () => {
   const dispatch = useDispatch();
 
   const elementCountChangeHandler = (event) => {
+    dispatch(actionCreators.stopVisualisation());
     dispatch(actionCreators.generateList(event.target.value));
   };
 

@@ -21,21 +21,27 @@ export const setInterval = (interval) => {
   };
 };
 
-export const swapElements = (idx1, idx2) => {
+export const swapElements = (idx1, idx2, visId) => {
   return {
     type: actionTypes.SWAP_ELEMENTS,
     idx1: idx1,
     idx2: idx2,
+    visId: visId,
   };
 };
 
-export const highlightElements = (idxColorMap) => {
+export const highlightElements = (idxColorMap, visId) => {
   return {
     type: actionTypes.HIGHLIGH_ELEMENTS,
     idxColorMap: idxColorMap,
+    visId: visId,
   };
 };
 
-export const setVisualising = (visualising) => {
-  return { type: actionTypes.SET_VISUALISING, visualising: visualising };
+export const startVisualisation = () => {
+  return { type: actionTypes.START_VISUALISATION };
+};
+
+export const stopVisualisation = (visId) => {
+  return { type: actionTypes.STOP_VISUALISATION, visId: visId };
 };

@@ -37,7 +37,7 @@ export const visualise = () => {
     const animationActions = algorithm(getState().currentList);
     for (let i = 0; i < animationActions.length; i++) {
       let action = animationActions[i];
-      setTimeout(() => dispatch(action), 10 * i);
+      setTimeout(() => dispatch(action), 5 * i);
     }
   };
 };

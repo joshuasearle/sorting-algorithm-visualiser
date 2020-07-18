@@ -29,7 +29,7 @@ const Columns = () => {
       key={index}
       width={elementWidth}
       left={residual / 2 + gapWidth + index * (gapWidth + elementWidth)}
-      color={'black'}
+      color={column.color}
     />
   ));
 

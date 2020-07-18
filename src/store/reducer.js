@@ -13,7 +13,6 @@ const randomListGenerator = (length) => {
 const initialState = {
   algorithm: 'selection-sort',
   currentList: randomListGenerator(20),
-  listColors: 'todo', // lasdkjfa;lskdjfaljfkl;sjdfa;lksjdfa;sjdfaskljdfask;jld,
 };
 
 const setAlgorithm = (state, action) => {
@@ -34,6 +33,16 @@ const swapElements = (state, action) => {
   return objectCombiner(state, { currentList: newList });
 };
 
+const highlight = (state, action) => {
+  const newList = state.currentList.map((item, idx) => {
+    if (action.idxs.includes(idx)) {
+      return objectCombiner(item, { color: action.color });
+    }
+    return item;
+  });
+  return objectCombiner(state, { currentList: newList });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_ALGORITHM:
@@ -42,6 +51,8 @@ const reducer = (state = initialState, action) => {
       return generateList(state, action);
     case actionTypes.SWAP_ELEMENTS:
       return swapElements(state, action);
+    case actionTypes.HIGHLIGH_ELEMENTS:
+      return highlight(state, action);
     default:
       return state;
   }

@@ -23,7 +23,7 @@ export const swapElements = (idx1, idx2) => {
   };
 };
 
-export const highlightElements = (color, idxs) => {
+export const highlightElements = (idxs, color) => {
   return {
     type: actionTypes.HIGHLIGH_ELEMENTS,
     color: color,
@@ -37,7 +37,7 @@ export const visualise = () => {
     const animationActions = algorithm(getState().currentList);
     for (let i = 0; i < animationActions.length; i++) {
       let action = animationActions[i];
-      setTimeout(() => dispatch(action), 100 * i);
+      setTimeout(() => dispatch(action), 10 * i);
     }
   };
 };

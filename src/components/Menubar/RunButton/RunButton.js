@@ -8,7 +8,6 @@ const RunButton = () => {
   const dispatch = useDispatch();
 
   const buttonPressHandler = () => {
-    console.log('lsjdf');
     dispatch(actionCreators.visualise());
   };
 

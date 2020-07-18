@@ -35,6 +35,9 @@ export const visualise = () => {
   return (dispatch, getState) => {
     const algorithm = sortingAlgs[getState().algorithm];
     const animationActions = algorithm(getState().currentList);
-    console.log(animationActions);
+    for (let i = 0; i < animationActions.length; i++) {
+      let action = animationActions[i];
+      setTimeout(() => dispatch(action), 100 * i);
+    }
   };
 };

@@ -34,12 +34,10 @@ const swapElements = (state, action) => {
 };
 
 const highlight = (state, action) => {
-  const newList = state.currentList.map((item, idx) => {
-    if (action.idxs.includes(idx)) {
-      return objectCombiner(item, { color: action.color });
-    }
-    return item;
-  });
+  const newList = [...state.currentList];
+  for (let { idx, color } of action.idxColorMap) {
+    newList[idx] = objectCombiner(newList[idx], { color: color });
+  }
   return objectCombiner(state, { currentList: newList });
 };
 

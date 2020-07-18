@@ -23,11 +23,10 @@ export const swapElements = (idx1, idx2) => {
   };
 };
 
-export const highlightElements = (idxs, color) => {
+export const highlightElements = (idxColorMap) => {
   return {
     type: actionTypes.HIGHLIGH_ELEMENTS,
-    color: color,
-    idxs: idxs,
+    idxColorMap: idxColorMap,
   };
 };
 
@@ -37,7 +36,7 @@ export const visualise = () => {
     const animationActions = algorithm(getState().currentList);
     for (let i = 0; i < animationActions.length; i++) {
       let action = animationActions[i];
-      setTimeout(() => dispatch(action), 200 * i);
+      setTimeout(() => dispatch(action), 10 * i);
     }
   };
 };

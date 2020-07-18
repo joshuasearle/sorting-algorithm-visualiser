@@ -13,19 +13,27 @@ const selectionSort = (arr) => {
   for (let i = 0; i < result.length; i++) {
     let minIdx = i;
     // color ith index green
-    animations.push(actionCreators.highlightElements([minIdx], 'green'));
+    animations.push(
+      actionCreators.highlightElements([{ idx: minIdx, color: 'green' }])
+    );
     for (let j = i + 1; j < result.length; j++) {
       // color the index we are checking green
-      animations.push(actionCreators.highlightElements([j], 'green'));
+      animations.push(
+        actionCreators.highlightElements([{ idx: j, color: 'green' }])
+      );
       if (result[j].value < result[minIdx].value) {
         if (minIdx !== i) {
           // color minIndex black if no longer minIndex, unless minIndex is ith index
-          animations.push(actionCreators.highlightElements([minIdx], 'black'));
+          animations.push(
+            actionCreators.highlightElements([{ idx: minIdx, color: 'black' }])
+          );
         }
         minIdx = j;
       } else {
         // color jth black, as we want to forget about it
-        animations.push(actionCreators.highlightElements([j], 'black'));
+        animations.push(
+          actionCreators.highlightElements([{ idx: j, color: 'black' }])
+        );
       }
     }
     // swap elements we are swapping

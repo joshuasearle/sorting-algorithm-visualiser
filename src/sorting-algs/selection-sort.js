@@ -1,24 +1,31 @@
+import * as actionCreators from '../store/actionCreators';
+
 const selectionSort = (arr) => {
   const result = [...arr];
   const animations = [];
   for (let i = 0; i < result.length; i++) {
     let minIdx = i;
-    animations.push({ type: 'color', color: 'green', idxs: i });
+    // color ith index green
+    animations.push(actionCreators.highlightElements([minIdx], 'green'));
     for (let j = i + 1; j < result.length; j++) {
-      animations.push({ type: 'color', color: 'red', idx: j });
-      if (result[j] < result[minIdx]) {
+      // color the index we are checking green
+      animations.push(actionCreators.highlightElements([j], 'green'));
+      if (result[j].value < result[minIdx].value) {
         if (minIdx !== i) {
-          animations.push({ type: 'color', color: 'black', idx: minIdx });
+          // color minIndex black if no longer minIndex, unless minIndex is ith index
+          animations.push(actionCreators.highlightElements([minIdx], 'black'));
         }
         minIdx = j;
       } else {
-        animations.push({ type: 'color', color: 'black', idx: j });
+        // color jth black, as we want to forget about it
+        animations.push(actionCreators.highlightElements([j], 'black'));
       }
     }
-    [result[minIdx], result[i]] = [result[i], result[minIdx]];
-    animations.push({ type: 'swap', idx1: minIdx, idx2: i });
-    animations.push({ type: 'color', color: 'black', idx: minIdx });
-    animations.push({ type: 'color', color: 'green', idx: i });
+    // swap elements we are swapping
+    animations.push(actionCreators.swapElements(i, minIdx))[
+      (result[minIdx], result[i])
+    ] = [result[i], result[minIdx]];
+    // color the swapped elements black, as we are done with them for now
   }
   return animations;
 };

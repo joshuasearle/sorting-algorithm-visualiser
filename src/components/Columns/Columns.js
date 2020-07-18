@@ -23,9 +23,9 @@ const Columns = () => {
     windowWidth -
     (elementWidth * currentList.length + gapWidth * (currentList.length + 1));
 
-  const columns = currentList.map((value, index) => (
+  const columns = currentList.map((column, index) => (
     <Column
-      value={value}
+      value={column.value}
       key={index}
       width={elementWidth}
       left={residual / 2 + gapWidth + index * (gapWidth + elementWidth)}

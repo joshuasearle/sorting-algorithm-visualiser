@@ -18,3 +18,5 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 - change the run button so that is says **STOP** when sorting, and you can cancel it
 - fix the menu bar
 - make the site more responsive
+- add **Randomise List** button
+- find a way to speed up the animations

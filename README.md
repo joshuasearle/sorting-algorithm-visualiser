@@ -9,7 +9,7 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 
 ### TODO
 
-- add bubble sort
+- ~add bubble sort~
 - add shaker sort
 - add quick sort
 - add merge sort
@@ -21,3 +21,4 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 - add **Randomise List** button
 - find a way to speed up the animations
 - refactor **visualise** action
+- refactor repeated animation code in sorting algs

@@ -50,7 +50,7 @@ const insertionSort = (arr, visId) => {
     );
   }
 
-  for (let i = arr.length; i >= 0; i--) {
+  for (let i = arr.length - 1; i >= 0; i--) {
     animations.push(
       actionCreators.highlightElements([{ idx: i, color: 'black' }], visId)
     );

@@ -41,6 +41,9 @@ const selectionSort = (arr, visId) => {
     animations.push(actionCreators.swapElements(i, minIdx, visId));
     [result[minIdx], result[i]] = [result[i], result[minIdx]];
     // color the swapped elements black, as we are done with them for now
+    animations.push(
+      actionCreators.highlightElements([{ idx: minIdx, color: 'black' }], visId)
+    );
   }
   for (let i = arr.length - 1; i >= 0; i--) {
     animations.push(

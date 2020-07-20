@@ -11,7 +11,6 @@ import RandomiseList from './RandomiseList/RandomiseList';
 
 const Menubar = () => {
   const visId = useSelector((state) => state.currentVisId);
-  console.log(visId);
 
   const button = visId === null ? <RunButton /> : <StopButton />;
   return (

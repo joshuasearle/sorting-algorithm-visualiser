@@ -63,14 +63,28 @@ export const visualise = () => {
 
 const recursiveTimeout = (dispatch, getState, actions, actionIdx, visId) => {
   setTimeout(() => {
-    if (actionIdx === actions.length - 1 || getState().currentVisId !== visId) {
+    if (actionIdx >= actions.length - 1 || getState().currentVisId !== visId) {
       // if visualisation has ended, or at end of animation sequence, end the visualisation
       dispatch(stopVisualisation());
       return;
     }
     // do the animation
-    dispatch(actions[actionIdx]);
+    // dispatch(actions[actionIdx]);
+    const newActionIdx = actionDispatcher(dispatch, actionIdx, 1, actions);
     // call the next animation, with an incremented actionIdx
-    recursiveTimeout(dispatch, getState, actions, actionIdx + 1, visId);
+    recursiveTimeout(dispatch, getState, actions, newActionIdx, visId);
   }, getState().interval); // continually update the interval
+};
+
+const actionDispatcher = (dispatch, currentIdx, actionCount, actions) => {
+  let i = currentIdx;
+  for (; i < actions.length && i < currentIdx + actionCount; i++) {
+    if (
+      actions[i].type !== actionTypes.HIGHLIGH_ELEMENTS ||
+      actionCount === 1
+    ) {
+      dispatch(actions[i]);
+    }
+  }
+  return i;
 };

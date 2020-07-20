@@ -17,7 +17,7 @@ const ElementCountPicker = () => {
     <div>
       <FormLabel>Speed</FormLabel>
       <Slider
-        min='1'
+        min='0'
         max='100'
         value={interval}
         onChange={intervalChangeHandler}

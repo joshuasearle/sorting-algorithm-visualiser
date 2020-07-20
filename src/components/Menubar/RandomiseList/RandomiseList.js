@@ -9,6 +9,7 @@ const RandomList = () => {
   const length = useSelector((state) => state.currentList.length);
 
   const clickHandler = () => {
+    dispatch(actionCreators.stopVisualisation());
     dispatch(actionCreators.generateList(length));
   };
 

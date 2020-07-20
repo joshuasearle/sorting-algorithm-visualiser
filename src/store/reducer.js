@@ -13,7 +13,7 @@ const randomListGenerator = (length) => {
 const initialState = {
   algorithm: 'selection-sort',
   currentList: randomListGenerator(20),
-  interval: 50,
+  speed: 50,
   nextVisId: 0,
   currentVisId: null,
 };
@@ -23,7 +23,7 @@ const setAlgorithm = (state, action) => {
 };
 
 const generateList = (state, action) => {
-  const newListLength = Math.max(0, Math.min(100, action.length));
+  const newListLength = Math.max(0, Math.min(200, action.length));
   const newList = randomListGenerator(newListLength);
   return objectCombiner(state, { currentList: newList });
 };
@@ -50,8 +50,17 @@ const highlight = (state, action) => {
   return objectCombiner(state, { currentList: newList });
 };
 
-const setInterval = (state, action) => {
-  return objectCombiner(state, { interval: action.interval });
+const setSpeed = (state, action) => {
+  if (action.speed > 50 && state.speed <= 50) {
+    return objectCombiner(state, {
+      currentList: state.currentList.map((item) => ({
+        ...item,
+        color: 'black',
+      })),
+      speed: action.speed,
+    });
+  }
+  return objectCombiner(state, { speed: action.speed });
 };
 
 const startVisualisation = (state, action) => {
@@ -83,10 +92,10 @@ const reducer = (state = initialState, action) => {
       return generateList(state, action);
     case actionTypes.SWAP_ELEMENTS:
       return swapElements(state, action);
-    case actionTypes.HIGHLIGH_ELEMENTS:
+    case actionTypes.HIGHLIGHT_ELEMENTS:
       return highlight(state, action);
-    case actionTypes.SET_INTERVAL:
-      return setInterval(state, action);
+    case actionTypes.SET_SPEED:
+      return setSpeed(state, action);
     case actionTypes.START_VISUALISATION:
       return startVisualisation(state, action);
     case actionTypes.STOP_VISUALISATION:

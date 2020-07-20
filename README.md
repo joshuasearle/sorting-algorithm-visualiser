@@ -16,10 +16,10 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 - add merge sort
 - add heap sort
 - add radix sort
-- change the run button so that is says **STOP** when sorting, and you can cancel it
+- ~change the run button so that is says **STOP** when sorting, and you can cancel it~
 - fix the menu bar
 - make the site more responsive
-- add **Randomise List** button
+- ~add **Randomise List** button~
 - find a way to speed up the animations
 - ~refactor **visualise** action~
 - ~refactor repeated animation code in sorting algs~

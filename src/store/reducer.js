@@ -51,15 +51,15 @@ const highlight = (state, action) => {
 };
 
 const setSpeed = (state, action) => {
-  if (action.speed > 50 && state.speed <= 50) {
-    return objectCombiner(state, {
-      currentList: state.currentList.map((item) => ({
-        ...item,
-        color: 'black',
-      })),
-      speed: action.speed,
-    });
-  }
+  // if (action.speed > 50 && state.speed <= 50) {
+  //   return objectCombiner(state, {
+  //     currentList: state.currentList.map((item) => ({
+  //       ...item,
+  //       color: 'black',
+  //     })),
+  //     speed: action.speed,
+  //   });
+  // }
   return objectCombiner(state, { speed: action.speed });
 };
 

@@ -69,15 +69,15 @@ const recursiveTimeout = (dispatch, getState, actions, actionIdx, visId) => {
       return;
     }
     // do the animation
-    // dispatch(actions[actionIdx]);
-    const newActionIdx = actionDispatcher(
-      dispatch,
-      actionIdx,
-      speedToAnimRepeat(getState().speed),
-      actions
-    );
+    dispatch(actions[actionIdx]);
+    // const newActionIdx = actionDispatcher(
+    //   dispatch,
+    //   actionIdx,
+    //   speedToAnimRepeat(getState().speed),
+    //   actions
+    // );
     // call the next animation, with an incremented actionIdx
-    recursiveTimeout(dispatch, getState, actions, newActionIdx, visId);
+    recursiveTimeout(dispatch, getState, actions, actionIdx + 1, visId);
   }, speedToInterval(getState().speed)); // continually update the interval
 };
 
@@ -95,9 +95,10 @@ const actionDispatcher = (dispatch, currentIdx, actionCount, actions) => {
 };
 
 const speedToInterval = (speed) => {
-  // speed of 50 - 100 give an interval of 1ms
-  // speed of 0 - 50 give an interval of 50 - speed
-  return Math.max(1, 50 - speed);
+  // // speed of 50 - 100 give an interval of 1ms
+  // // speed of 0 - 50 give an interval of 50 - speed
+  // return Math.max(1, 50 - speed);
+  return 100 - speed + 1;
 };
 
 const speedToAnimRepeat = (speed) => {

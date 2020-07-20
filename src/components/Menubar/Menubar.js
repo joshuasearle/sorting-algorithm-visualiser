@@ -7,6 +7,7 @@ import ElementCountPicker from './ElementCountPicker/ElementCountPicker';
 import RunButton from './RunButton/RunButton';
 import SpeedPicker from './SpeedPicker/SpeedPicker';
 import StopButton from './StopButton/StopButton';
+import RandomiseList from './RandomiseList/RandomiseList';
 
 const Menubar = () => {
   const visId = useSelector((state) => state.currentVisId);
@@ -21,6 +22,7 @@ const Menubar = () => {
       </div>
       <div className={classes.ElementCountPicker}>
         <ElementCountPicker />
+        <RandomiseList />
         <SpeedPicker />
       </div>
       <div className={classes.ElementCountPicker}></div>

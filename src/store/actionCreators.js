@@ -84,13 +84,12 @@ const recursiveTimeout = (dispatch, getState, actions, actionIdx, visId) => {
 const actionDispatcher = (dispatch, currentIdx, actionCount, actions) => {
   let i = currentIdx;
   for (; i < actions.length && i < currentIdx + actionCount; i++) {
-    // if (
-    //   actions[i].type !== actionTypes.HIGHLIGH_ELEMENTS ||
-    //   actionCount === 1
-    // ) {
-    //   dispatch(actions[i]);
-    // }
-    dispatch(actions[i]);
+    if (
+      actions[i].type !== actionTypes.HIGHLIGH_ELEMENTS ||
+      actionCount === 1
+    ) {
+      dispatch(actions[i]);
+    }
   }
   return i;
 };

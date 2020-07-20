@@ -13,7 +13,7 @@ const randomListGenerator = (length) => {
 const initialState = {
   algorithm: 'selection-sort',
   currentList: randomListGenerator(20),
-  interval: 500,
+  interval: 50,
   nextVisId: 0,
   currentVisId: null,
 };

@@ -57,7 +57,6 @@ export const visualise = () => {
     const animations = alg(getState().currentList, visId);
     // start visualisation
     dispatch(startVisualisation());
-    console.log(getState());
     recursiveTimeout(dispatch, getState, animations, 0, visId);
   };
 };

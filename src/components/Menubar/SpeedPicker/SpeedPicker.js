@@ -6,11 +6,11 @@ import Slider from '../../inputs/Slider/Slider';
 import * as actionCreators from '../../../store/actionCreators';
 
 const ElementCountPicker = () => {
-  let interval = 100 - useSelector((state) => state.interval);
+  let speed = useSelector((state) => state.interval);
   const dispatch = useDispatch();
 
   const intervalChangeHandler = (event) => {
-    dispatch(actionCreators.setInterval(100 - event.target.value));
+    dispatch(actionCreators.setSpeed(event.target.value));
   };
 
   return (
@@ -19,7 +19,7 @@ const ElementCountPicker = () => {
       <Slider
         min='0'
         max='100'
-        value={interval}
+        value={speed}
         onChange={intervalChangeHandler}
       />
     </div>

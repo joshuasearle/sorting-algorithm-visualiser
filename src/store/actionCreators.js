@@ -15,10 +15,10 @@ export const setAlgorithm = (algorithm) => {
   };
 };
 
-export const setInterval = (interval) => {
+export const setSpeed = (speed) => {
   return {
-    type: actionTypes.SET_INTERVAL,
-    interval: interval,
+    type: actionTypes.SET_SPEED,
+    speed: speed,
   };
 };
 

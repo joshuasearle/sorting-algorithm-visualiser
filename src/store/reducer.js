@@ -13,7 +13,7 @@ const randomListGenerator = (length) => {
 const initialState = {
   algorithm: 'selection-sort',
   currentList: randomListGenerator(20),
-  interval: 50,
+  speed: 50,
   nextVisId: 0,
   currentVisId: null,
 };
@@ -50,8 +50,8 @@ const highlight = (state, action) => {
   return objectCombiner(state, { currentList: newList });
 };
 
-const setInterval = (state, action) => {
-  return objectCombiner(state, { interval: action.interval });
+const setSpeed = (state, action) => {
+  return objectCombiner(state, { speed: action.speed });
 };
 
 const startVisualisation = (state, action) => {
@@ -85,8 +85,8 @@ const reducer = (state = initialState, action) => {
       return swapElements(state, action);
     case actionTypes.HIGHLIGH_ELEMENTS:
       return highlight(state, action);
-    case actionTypes.SET_INTERVAL:
-      return setInterval(state, action);
+    case actionTypes.SET_SPEED:
+      return setSpeed(state, action);
     case actionTypes.START_VISUALISATION:
       return startVisualisation(state, action);
     case actionTypes.STOP_VISUALISATION:

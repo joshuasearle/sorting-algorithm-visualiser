@@ -1,6 +1,6 @@
 export const SET_ALGORITHM = 'SET_ALGORITHM';
 export const GENERATE_LIST = 'GENERATE_LIST';
-export const SET_INTERVAL = 'SET_INTERVAL';
+export const SET_SPEED = 'SET_SPEED';
 
 export const SWAP_ELEMENTS = 'SWAP_ELEMENTS';
 export const HIGHLIGH_ELEMENTS = 'HIGHLIGHT_ELEMENTS';

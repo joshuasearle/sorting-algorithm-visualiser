@@ -65,7 +65,7 @@ const recursiveTimeout = (dispatch, getState, actions, actionIdx, visId) => {
   setTimeout(() => {
     if (actionIdx === actions.length - 1 || getState().currentVisId !== visId) {
       // if visualisation has ended, or at end of animation sequence, end the visualisation
-      dispatch(stopVisualisation);
+      dispatch(stopVisualisation());
       return;
     }
     // do the animation

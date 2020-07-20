@@ -11,7 +11,7 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 ### TODO
 
 - ~add bubble sort~
-- add shaker sort
+- ~add shaker sort~
 - add quick sort
 - add merge sort
 - add heap sort

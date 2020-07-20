@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import sortingAlgs from '../sorting-algs/sorting-main';
 
 export const generateList = (length) => {
   return {
@@ -44,4 +45,33 @@ export const startVisualisation = () => {
 
 export const stopVisualisation = (visId) => {
   return { type: actionTypes.STOP_VISUALISATION, visId: visId };
+};
+
+export const visualise = () => {
+  return (dispatch, getState) => {
+    // stop any current visualisations
+    dispatch(stopVisualisation());
+    // get alg, visId, and animations from alg
+    const alg = sortingAlgs[getState().algorithm];
+    const visId = getState().nextVisId;
+    const animations = alg(getState().currentList, visId);
+    // start visualisation
+    dispatch(startVisualisation());
+    console.log(getState());
+    recursiveTimeout(dispatch, getState, animations, 0, visId);
+  };
+};
+
+const recursiveTimeout = (dispatch, getState, actions, actionIdx, visId) => {
+  setTimeout(() => {
+    if (actionIdx === actions.length - 1 || getState().currentVisId !== visId) {
+      // if visualisation has ended, or at end of animation sequence, end the visualisation
+      dispatch(stopVisualisation);
+      return;
+    }
+    // do the animation
+    dispatch(actions[actionIdx]);
+    // call the next animation, with an incremented actionIdx
+    recursiveTimeout(dispatch, getState, actions, actionIdx + 1, visId);
+  }, getState().interval); // continually update the interval
 };

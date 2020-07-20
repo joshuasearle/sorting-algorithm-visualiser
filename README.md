@@ -8,6 +8,7 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 - insertion sort
 - bubble sort
 - shaker sort
+- quick sort
 
 ### TODO
 

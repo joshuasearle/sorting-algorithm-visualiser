@@ -23,7 +23,7 @@ const setAlgorithm = (state, action) => {
 };
 
 const generateList = (state, action) => {
-  const newListLength = Math.max(0, Math.min(100, action.length));
+  const newListLength = Math.max(0, Math.min(200, action.length));
   const newList = randomListGenerator(newListLength);
   return objectCombiner(state, { currentList: newList });
 };

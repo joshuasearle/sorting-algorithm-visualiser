@@ -1,13 +1,10 @@
 import * as actionCreators from '../store/actionCreators';
+import * as sortUtil from './sort-util';
 
 const selectionSort = (arr, visId) => {
   const result = [...arr];
-  const animations = [];
-  const highlights = result.map((item, idx) => ({
-    idx: idx,
-    color: 'black',
-  }));
-  animations.push(actionCreators.highlightElements(highlights, visId));
+  let animations = [];
+  animations.push(sortUtil.instantAllColor(arr.length, 'black', visId));
   for (let i = 0; i < result.length; i++) {
     let minIdx = i;
     // color ith index green
@@ -50,11 +47,10 @@ const selectionSort = (arr, visId) => {
       );
     }
   }
-  for (let i = arr.length - 1; i >= 0; i--) {
-    animations.push(
-      actionCreators.highlightElements([{ idx: i, color: 'black' }], visId)
-    );
-  }
+  animations = [
+    ...animations,
+    ...sortUtil.gradualAllColorReverse(arr.length, 'black', visId),
+  ];
   return animations;
   // return result;
 };

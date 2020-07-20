@@ -1,12 +1,9 @@
 import * as actionCreators from '../store/actionCreators';
+import * as sortUtil from './sort-util';
 
 const bubbleSort = (arr, visId) => {
-  const animations = [];
-  const highlights = arr.map((item, idx) => ({
-    idx: idx,
-    color: 'black',
-  }));
-  animations.push(actionCreators.highlightElements(highlights, visId));
+  let animations = [];
+  animations.push(sortUtil.instantAllColor(arr.length, 'black', visId));
   const result = [...arr];
   for (let i = 0; i < arr.length - 1; i++) {
     animations.push(
@@ -30,17 +27,10 @@ const bubbleSort = (arr, visId) => {
       animations.push(actionCreators.highlightElements(highlighted, visId));
     }
   }
-  for (let i = 0; i < arr.length; i++) {
-    animations.push(
-      actionCreators.highlightElements([{ idx: i, color: 'green' }], visId)
-    );
-  }
-
-  for (let i = arr.length - 1; i >= 0; i--) {
-    animations.push(
-      actionCreators.highlightElements([{ idx: i, color: 'black' }], visId)
-    );
-  }
+  animations = [
+    ...animations,
+    ...sortUtil.gradualAllColorReverse(arr.length, 'black', visId),
+  ];
   return animations;
 };
 

@@ -6,6 +6,7 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 
 - selection sort
 - insertion sort
+- bubble sort
 
 ### TODO
 

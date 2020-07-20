@@ -16,7 +16,6 @@ const ElementCountPicker = () => {
   return (
     <div>
       <FormLabel>Speed</FormLabel>
-      <p>(max 1 animation per ms)</p>
       <Slider
         min='0'
         max='100'

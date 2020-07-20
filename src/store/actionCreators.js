@@ -33,7 +33,7 @@ export const swapElements = (idx1, idx2, visId) => {
 
 export const highlightElements = (idxColorMap, visId) => {
   return {
-    type: actionTypes.HIGHLIGH_ELEMENTS,
+    type: actionTypes.HIGHLIGHT_ELEMENTS,
     idxColorMap: idxColorMap,
     visId: visId,
   };
@@ -85,7 +85,7 @@ const actionDispatcher = (dispatch, currentIdx, actionCount, actions) => {
   let i = currentIdx;
   for (; i < actions.length && i < currentIdx + actionCount; i++) {
     if (
-      actions[i].type !== actionTypes.HIGHLIGH_ELEMENTS ||
+      actions[i].type !== actionTypes.HIGHLIGHT_ELEMENTS ||
       actionCount === 1
     ) {
       dispatch(actions[i]);

@@ -20,5 +20,5 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 - make the site more responsive
 - add **Randomise List** button
 - find a way to speed up the animations
-- refactor **visualise** action
+- ~refactor **visualise** action~
 - ~refactor repeated animation code in sorting algs~

@@ -25,3 +25,4 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 - ~refactor **visualise** action~
 - ~refactor repeated animation code in sorting algs~
 - ~condense animation actions~
+- add reverse list button

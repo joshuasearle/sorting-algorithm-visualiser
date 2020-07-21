@@ -14,7 +14,7 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 
 - ~add bubble sort~
 - ~add shaker sort~
-- add quick sort
+- ~add quick sort~
 - add merge sort
 - add heap sort
 - add radix sort

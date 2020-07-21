@@ -32,19 +32,21 @@ const shakerSort = (arr, visId) => {
 
     // do a normal bubble iteration
     for (let i = start; i < end; i++) {
+      let highlighted = [];
+      let swap = null;
+      if (i !== end - 1) {
+        highlighted.push({ idx: i + 2, color: 'green' });
+      }
       if (result[i].value > result[i + 1].value) {
         // if in wrong order, swap
         [result[i], result[i + 1]] = [result[i + 1], result[i]];
-        animations.push(
-          actionCreators.animateElements(visId, null, [i, i + 1])
-        );
+        swap = [i, i + 1];
+        highlighted.push({ idx: i + 1, color: 'black' });
         swapped = true;
+      } else {
+        highlighted.push({ idx: i, color: 'black' });
       }
-      let highlighted = [{ idx: i, color: 'black' }];
-      if (i + 2 < result.length) {
-        highlighted.push({ idx: i + 2, color: 'green' });
-      }
-      animations.push(actionCreators.animateElements(visId, highlighted, null));
+      animations.push(actionCreators.animateElements(visId, highlighted, swap));
     }
 
     // if no swap occured in the first iter, the list is sorted
@@ -69,19 +71,21 @@ const shakerSort = (arr, visId) => {
 
     // do a reverse bubble iter
     for (let i = end - 1; i > start - 1; i--) {
+      let highlighted = [];
+      let swap = null;
+      if (i !== start + 1) {
+        highlighted.push({ idx: i - 1, color: 'green' });
+      }
       if (result[i].value > result[i + 1].value) {
         // if in wrong order, swap
         [result[i], result[i + 1]] = [result[i + 1], result[i]];
-        animations.push(
-          actionCreators.animateElements(visId, null, [i, i + 1])
-        );
+        swap = [i, i + 1];
         swapped = true;
+        highlighted.push({ idx: i, color: 'black' });
+      } else {
+        highlighted.push({ idx: i + 1, color: 'black' });
       }
-      let highlighted = [{ idx: i + 1, color: 'black' }];
-      if (i + 2 < result.length) {
-        highlighted.push({ idx: i - 1, color: 'green' });
-      }
-      animations.push(actionCreators.animateElements(visId, highlighted, null));
+      animations.push(actionCreators.animateElements(visId, highlighted, swap));
     }
 
     // same as before, but with start now as the bubble iter was reversed

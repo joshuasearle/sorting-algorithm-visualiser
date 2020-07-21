@@ -23,7 +23,7 @@ const partition = (arr, visId, animations, lo, hi) => {
         sortUtil.getSingleHighlightAction({ idx: j, color: 'black' }, visId)
       );
       animations.push(
-        actionCreators.swapElements(j, lastElSmallerThanPivot, visId)
+        actionCreators.animateElements(visId, null, [j, lastElSmallerThanPivot])
       );
     } else {
       animations.push(
@@ -37,7 +37,10 @@ const partition = (arr, visId, animations, lo, hi) => {
   arr[hi] = arr[lastElSmallerThanPivot + 1];
   arr[lastElSmallerThanPivot + 1] = tmp;
   animations.push(
-    actionCreators.swapElements(hi, lastElSmallerThanPivot + 1, visId)
+    actionCreators.animateElements(visId, null, [
+      hi,
+      lastElSmallerThanPivot + 1,
+    ])
   );
 
   // return idx of pivot

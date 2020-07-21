@@ -17,12 +17,13 @@ const shakerSort = (arr, visId) => {
   let swapped = true;
   while (swapped) {
     animations.push(
-      actionCreators.highlightElements(
+      actionCreators.animateElements(
+        visId,
         [
           { idx: start, color: 'green' },
           { idx: start + 1, color: 'green' },
         ],
-        visId
+        null
       )
     );
     // initially set to false
@@ -34,14 +35,16 @@ const shakerSort = (arr, visId) => {
       if (result[i].value > result[i + 1].value) {
         // if in wrong order, swap
         [result[i], result[i + 1]] = [result[i + 1], result[i]];
-        animations.push(actionCreators.swapElements(i, i + 1, visId));
+        animations.push(
+          actionCreators.animateElements(visId, null, [i, i + 1])
+        );
         swapped = true;
       }
       let highlighted = [{ idx: i, color: 'black' }];
       if (i + 2 < result.length) {
         highlighted.push({ idx: i + 2, color: 'green' });
       }
-      animations.push(actionCreators.highlightElements(highlighted, visId));
+      animations.push(actionCreators.animateElements(visId, highlighted, null));
     }
 
     // if no swap occured in the first iter, the list is sorted
@@ -53,14 +56,14 @@ const shakerSort = (arr, visId) => {
     // we now know that the the element in index end is now sorted
     // so we forget about it by decrementing end
     end -= 1;
-
     animations.push(
-      actionCreators.highlightElements(
+      actionCreators.animateElements(
+        visId,
         [
           { idx: end, color: 'green' },
           { idx: end - 1, color: 'green' },
         ],
-        visId
+        null
       )
     );
 
@@ -69,14 +72,16 @@ const shakerSort = (arr, visId) => {
       if (result[i].value > result[i + 1].value) {
         // if in wrong order, swap
         [result[i], result[i + 1]] = [result[i + 1], result[i]];
-        animations.push(actionCreators.swapElements(i, i + 1, visId));
+        animations.push(
+          actionCreators.animateElements(visId, null, [i, i + 1])
+        );
         swapped = true;
       }
       let highlighted = [{ idx: i + 1, color: 'black' }];
       if (i + 2 < result.length) {
         highlighted.push({ idx: i - 1, color: 'green' });
       }
-      animations.push(actionCreators.highlightElements(highlighted, visId));
+      animations.push(actionCreators.animateElements(visId, highlighted, null));
     }
 
     // same as before, but with start now as the bubble iter was reversed

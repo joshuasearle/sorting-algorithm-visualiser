@@ -7,24 +7,27 @@ const bubbleSort = (arr, visId) => {
   const result = [...arr];
   for (let i = 0; i < arr.length - 1; i++) {
     animations.push(
-      actionCreators.highlightElements(
+      actionCreators.animateElements(
+        visId,
         [
           { idx: 0, color: 'green' },
           { idx: 1, color: 'green' },
         ],
-        visId
+        null
       )
     );
     for (let j = 0; j < arr.length - 1 - i; j++) {
       if (result[j].value > result[j + 1].value) {
-        animations.push(actionCreators.swapElements(j, j + 1, visId));
+        animations.push(
+          actionCreators.animateElements(visId, null, [j, j + 1])
+        );
         [result[j], result[j + 1]] = [result[j + 1], result[j]];
       }
       let highlighted = [{ idx: j, color: 'black' }];
       if (j + 2 < result.length) {
         highlighted.push({ idx: j + 2, color: 'green' });
       }
-      animations.push(actionCreators.highlightElements(highlighted, visId));
+      animations.push(actionCreators.animateElements(visId, highlighted, null));
     }
   }
   animations = [

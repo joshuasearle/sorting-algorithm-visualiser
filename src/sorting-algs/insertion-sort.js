@@ -7,36 +7,37 @@ const insertionSort = (arr, visId) => {
   const result = [...arr];
   for (let i = 0; i < arr.length; i++) {
     animations.push(
-      actionCreators.highlightElements([{ idx: i, color: 'green' }], visId)
+      sortUtil.getSingleHighlightAction({ idx: i, color: 'green' }, visId)
     );
     let j = i - 1;
     animations.push(
-      actionCreators.highlightElements([{ idx: j, color: 'green' }], visId)
+      sortUtil.getSingleHighlightAction({ idx: j, color: 'green' }, visId)
     );
     while (j >= 0 && result[j + 1].value < result[j].value) {
       let tmp = result[j];
       result[j] = result[j + 1];
       result[j + 1] = tmp;
-      animations.push(actionCreators.swapElements(j, j + 1, visId));
+      animations.push(actionCreators.animateElements(visId, null, [j, j + 1]));
       animations.push(
-        actionCreators.highlightElements(
+        actionCreators.animateElements(
+          visId,
           [
             { idx: j + 1, color: 'black' },
             { idx: j - 1, color: 'green' },
           ],
-          visId
+          null
         )
       );
-
       j -= 1;
     }
     animations.push(
-      actionCreators.highlightElements(
+      actionCreators.animateElements(
+        visId,
         [
           { idx: j, color: 'black' },
           { idx: j + 1, color: 'black' },
         ],
-        visId
+        null
       )
     );
   }

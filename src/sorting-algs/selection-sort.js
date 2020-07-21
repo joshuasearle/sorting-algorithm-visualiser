@@ -9,19 +9,19 @@ const selectionSort = (arr, visId) => {
     let minIdx = i;
     // color ith index green
     animations.push(
-      actionCreators.highlightElements([{ idx: minIdx, color: 'green' }], visId)
+      sortUtil.getSingleHighlightAction({ idx: minIdx, color: 'green' }, visId)
     );
     for (let j = i + 1; j < result.length; j++) {
       // color the index we are checking green
       animations.push(
-        actionCreators.highlightElements([{ idx: j, color: 'green' }], visId)
+        sortUtil.getSingleHighlightAction({ idx: j, color: 'green' }, visId)
       );
       if (result[j].value < result[minIdx].value) {
         if (minIdx !== i) {
           // color minIndex black if no longer minIndex, unless minIndex is ith index
           animations.push(
-            actionCreators.highlightElements(
-              [{ idx: minIdx, color: 'black' }],
+            sortUtil.getSingleHighlightAction(
+              { idx: minIdx, color: 'black' },
               visId
             )
           );
@@ -30,18 +30,18 @@ const selectionSort = (arr, visId) => {
       } else {
         // color jth black, as we want to forget about it
         animations.push(
-          actionCreators.highlightElements([{ idx: j, color: 'black' }], visId)
+          sortUtil.getSingleHighlightAction({ idx: j, color: 'black' }, visId)
         );
       }
     }
     // swap elements we are swapping
-    animations.push(actionCreators.swapElements(i, minIdx, visId));
+    animations.push(actionCreators.animateElements(visId, null, [i, minIdx]));
     [result[minIdx], result[i]] = [result[i], result[minIdx]];
     // color the swapped elements black, as we are done with them for now
     if (minIdx !== i) {
       animations.push(
-        actionCreators.highlightElements(
-          [{ idx: minIdx, color: 'black' }],
+        sortUtil.getSingleHighlightAction(
+          { idx: minIdx, color: 'black' },
           visId
         )
       );

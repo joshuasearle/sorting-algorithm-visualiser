@@ -3,33 +3,25 @@ import * as sortUtil from './sort-util';
 
 const partition = (arr, visId, animations, lo, hi) => {
   // initially it is not in the arr
-  let lastElSmallerThanPivot = lo - 1;
-  const pivot = arr[hi]; // pivot is last element
   animations.push(
     sortUtil.getSingleHighlightAction({ idx: hi, color: 'green' }, visId)
   );
+  let lastElSmallerThanPivot = lo - 1;
+  const pivot = arr[hi]; // pivot is last element
   for (let j = lo; j < hi; j++) {
-    animations.push(
-      sortUtil.getSingleHighlightAction({ idx: j, color: 'green' }, visId)
-    );
+    let swap = null;
+    let highlights = [];
+    highlights.push({ idx: j, color: 'black' });
     if (arr[j].value < pivot.value) {
       lastElSmallerThanPivot += 1;
-
       // swap into new position
       let tmp = arr[j];
       arr[j] = arr[lastElSmallerThanPivot];
       arr[lastElSmallerThanPivot] = tmp;
-      animations.push(
-        sortUtil.getSingleHighlightAction({ idx: j, color: 'black' }, visId)
-      );
-      animations.push(
-        actionCreators.swapElements(j, lastElSmallerThanPivot, visId)
-      );
-    } else {
-      animations.push(
-        sortUtil.getSingleHighlightAction({ idx: j, color: 'black' }, visId)
-      );
+      swap = [j, lastElSmallerThanPivot];
     }
+    highlights.push({ idx: j + 1, color: 'green' });
+    animations.push(actionCreators.animateElements(visId, highlights, swap));
   }
 
   // swap pivot with element after last element smaller than pivot
@@ -37,7 +29,10 @@ const partition = (arr, visId, animations, lo, hi) => {
   arr[hi] = arr[lastElSmallerThanPivot + 1];
   arr[lastElSmallerThanPivot + 1] = tmp;
   animations.push(
-    actionCreators.swapElements(hi, lastElSmallerThanPivot + 1, visId)
+    actionCreators.animateElements(visId, null, [
+      hi,
+      lastElSmallerThanPivot + 1,
+    ])
   );
 
   // return idx of pivot
@@ -52,7 +47,7 @@ const quickSortAux = (arr, visId, animations, lo, hi) => {
     // sort each side of the partition
     quickSortAux(arr, visId, animations, lo, pivIdx - 1);
     quickSortAux(arr, visId, animations, pivIdx + 1, hi);
-  } else {
+  } else if (lo !== arr.length) {
     animations.push(
       sortUtil.getSingleHighlightAction({ idx: lo, color: 'green' }, visId)
     );

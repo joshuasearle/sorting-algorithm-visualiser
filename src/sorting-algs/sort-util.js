@@ -2,9 +2,10 @@ import * as actionCreators from '../store/actionCreators';
 
 export const instantAllColor = (length, color, visId) => {
   // create a highlight action with
-  return actionCreators.highlightElements(
+  return actionCreators.animateElements(
+    visId,
     getIdxColorArray(length, color),
-    visId
+    null
   );
 };
 
@@ -30,5 +31,5 @@ const getIdxColorArray = (length, color) => {
 };
 
 export const getSingleHighlightAction = (idxColor, visId) => {
-  return actionCreators.highlightElements([idxColor], visId);
+  return actionCreators.animateElements(visId, [idxColor], null);
 };

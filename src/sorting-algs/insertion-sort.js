@@ -6,39 +6,56 @@ const insertionSort = (arr, visId) => {
   animations.push(sortUtil.instantAllColor(arr.length, 'black', visId));
   const result = [...arr];
   for (let i = 0; i < arr.length; i++) {
-    animations.push(
-      actionCreators.highlightElements([{ idx: i, color: 'green' }], visId)
-    );
     let j = i - 1;
     animations.push(
-      actionCreators.highlightElements([{ idx: j, color: 'green' }], visId)
+      actionCreators.animateElements(
+        visId,
+        [
+          { idx: i, color: 'green' },
+          { idx: i - 1, color: 'green' },
+        ],
+        null
+      )
     );
+
     while (j >= 0 && result[j + 1].value < result[j].value) {
       let tmp = result[j];
       result[j] = result[j + 1];
       result[j + 1] = tmp;
-      animations.push(actionCreators.swapElements(j, j + 1, visId));
+      let highlights = [];
+      highlights.push({ idx: j, color: 'black' });
+      highlights.push({ idx: j - 1, color: 'green' });
       animations.push(
-        actionCreators.highlightElements(
-          [
-            { idx: j + 1, color: 'black' },
-            { idx: j - 1, color: 'green' },
-          ],
-          visId
-        )
+        actionCreators.animateElements(visId, highlights, [j, j + 1])
       );
-
       j -= 1;
     }
-    animations.push(
-      actionCreators.highlightElements(
-        [
-          { idx: j, color: 'black' },
-          { idx: j + 1, color: 'black' },
-        ],
-        visId
-      )
-    );
+    if (j === i - 1) {
+      animations.push(
+        actionCreators.animateElements(
+          visId,
+          [
+            { idx: i, color: 'black' },
+            { idx: i - 1, color: 'black' },
+          ],
+          null
+        )
+      );
+    } else {
+      animations.push(
+        sortUtil.getSingleHighlightAction({ idx: j + 1, color: 'black' }, visId)
+      );
+      animations.push(
+        actionCreators.animateElements(
+          visId,
+          [
+            { idx: j + 1, color: 'black' },
+            { idx: j, color: 'black' },
+          ],
+          null
+        )
+      );
+    }
   }
   animations = [
     ...animations,

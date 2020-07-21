@@ -51,15 +51,6 @@ const highlight = (state, action) => {
 };
 
 const setSpeed = (state, action) => {
-  // if (action.speed > 50 && state.speed <= 50) {
-  //   return objectCombiner(state, {
-  //     currentList: state.currentList.map((item) => ({
-  //       ...item,
-  //       color: 'black',
-  //     })),
-  //     speed: action.speed,
-  //   });
-  // }
   return objectCombiner(state, { speed: action.speed });
 };
 
@@ -84,6 +75,33 @@ const stopVisualisation = (state, action) => {
   });
 };
 
+const animateElements = (state, action) => {
+  // check valid animation
+  if (action.visId !== state.currentVisId) {
+    return state;
+  }
+  // action: {type: ANIMATE_ELEMENTS, visId: 5, highlights: [{idx: 1, color: 'green'}], swap: [0, 4]}
+  // copy list
+  const newList = [...state.currentList];
+
+  // change all colors in highlight list
+  if (action.highlights) {
+    action.highlights.forEach(({ idx, color }) => {
+      newList[idx] = { ...newList[idx], color: color };
+    });
+  }
+
+  // swap elements
+  if (action.swap) {
+    const [idx1, idx2] = action.swap;
+    const tmp = newList[idx1];
+    newList[idx1] = newList[idx2];
+    newList[idx2] = tmp;
+  }
+
+  return objectCombiner(state, { currentList: newList });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_ALGORITHM:
@@ -100,6 +118,8 @@ const reducer = (state = initialState, action) => {
       return startVisualisation(state, action);
     case actionTypes.STOP_VISUALISATION:
       return stopVisualisation(state, action);
+    case actionTypes.ANIMATE_ELEMENTS:
+      return animateElements(state, action);
     default:
       return state;
   }

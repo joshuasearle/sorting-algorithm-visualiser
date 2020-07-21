@@ -22,23 +22,6 @@ export const setSpeed = (speed) => {
   };
 };
 
-export const swapElements = (idx1, idx2, visId) => {
-  return {
-    type: actionTypes.SWAP_ELEMENTS,
-    idx1: idx1,
-    idx2: idx2,
-    visId: visId,
-  };
-};
-
-export const highlightElements = (idxColorMap, visId) => {
-  return {
-    type: actionTypes.HIGHLIGHT_ELEMENTS,
-    idxColorMap: idxColorMap,
-    visId: visId,
-  };
-};
-
 export const startVisualisation = () => {
   return { type: actionTypes.START_VISUALISATION };
 };
@@ -68,41 +51,22 @@ const recursiveTimeout = (dispatch, getState, actions, actionIdx, visId) => {
       dispatch(stopVisualisation());
       return;
     }
+    // console.log(actions[actionIdx].highlights, actions[actionIdx].swap);
     // do the animation
     dispatch(actions[actionIdx]);
-    // const newActionIdx = actionDispatcher(
-    //   dispatch,
-    //   actionIdx,
-    //   speedToAnimRepeat(getState().speed),
-    //   actions
-    // );
-    // call the next animation, with an incremented actionIdx
     recursiveTimeout(dispatch, getState, actions, actionIdx + 1, visId);
   }, speedToInterval(getState().speed)); // continually update the interval
 };
 
-// const actionDispatcher = (dispatch, currentIdx, actionCount, actions) => {
-//   let i = currentIdx;
-//   for (; i < actions.length && i < currentIdx + actionCount; i++) {
-//     if (
-//       actions[i].type !== actionTypes.HIGHLIGHT_ELEMENTS ||
-//       actionCount === 1
-//     ) {
-//       dispatch(actions[i]);
-//     }
-//   }
-//   return i;
-// };
-
 const speedToInterval = (speed) => {
-  // // speed of 50 - 100 give an interval of 1ms
-  // // speed of 0 - 50 give an interval of 50 - speed
-  // return Math.max(1, 50 - speed);
   return 100 - speed + 4; // max interval of 4ms on modern browsers
 };
 
-// const speedToAnimRepeat = (speed) => {
-//   // speed of 50 - 100 give a repeat of speed - 50
-//   // speed of 0 - 50 give a reapeat of 1
-//   return Math.max(1, speed - 50);
-// };
+export const animateElements = (visId, highlights, swap) => {
+  return {
+    type: actionTypes.ANIMATE_ELEMENTS,
+    visId: visId,
+    highlights: highlights,
+    swap: swap,
+  };
+};

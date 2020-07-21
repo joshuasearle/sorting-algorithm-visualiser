@@ -7,27 +7,27 @@ const bubbleSort = (arr, visId) => {
   const result = [...arr];
   for (let i = 0; i < arr.length - 1; i++) {
     animations.push(
-      actionCreators.animateElements(
-        visId,
-        [
-          { idx: 0, color: 'green' },
-          { idx: 1, color: 'green' },
-        ],
-        null
-      )
+      actionCreators.animateElements(visId, [
+        { idx: 0, color: 'green' },
+        { idx: 1, color: 'green' },
+      ])
     );
     for (let j = 0; j < arr.length - 1 - i; j++) {
-      if (result[j].value > result[j + 1].value) {
-        animations.push(
-          actionCreators.animateElements(visId, null, [j, j + 1])
-        );
-        [result[j], result[j + 1]] = [result[j + 1], result[j]];
-      }
-      let highlighted = [{ idx: j, color: 'black' }];
-      if (j + 2 < result.length) {
+      let highlighted = [];
+      let swapped = null;
+      if (j !== arr.length - 2) {
         highlighted.push({ idx: j + 2, color: 'green' });
       }
-      animations.push(actionCreators.animateElements(visId, highlighted, null));
+      if (result[j].value > result[j + 1].value) {
+        [result[j], result[j + 1]] = [result[j + 1], result[j]];
+        highlighted.push({ idx: j + 1, color: 'black' });
+        swapped = [j, j + 1];
+      } else {
+        highlighted.push({ idx: j, color: 'black' });
+      }
+      animations.push(
+        actionCreators.animateElements(visId, highlighted, swapped)
+      );
     }
   }
   animations = [

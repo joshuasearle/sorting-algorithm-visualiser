@@ -51,6 +51,7 @@ const recursiveTimeout = (dispatch, getState, actions, actionIdx, visId) => {
       dispatch(stopVisualisation());
       return;
     }
+    // console.log(actions[actionIdx].highlights, actions[actionIdx].swap);
     // do the animation
     dispatch(actions[actionIdx]);
     recursiveTimeout(dispatch, getState, actions, actionIdx + 1, visId);

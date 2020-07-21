@@ -55,7 +55,7 @@ const quickSortAux = (arr, visId, animations, lo, hi) => {
     // sort each side of the partition
     quickSortAux(arr, visId, animations, lo, pivIdx - 1);
     quickSortAux(arr, visId, animations, pivIdx + 1, hi);
-  } else {
+  } else if (lo !== arr.length) {
     animations.push(
       sortUtil.getSingleHighlightAction({ idx: lo, color: 'green' }, visId)
     );

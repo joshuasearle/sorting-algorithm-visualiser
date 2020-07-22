@@ -1,3 +1,6 @@
+import * as actionCreators from '../store/actionCreators';
+import * as sortUtil from './sort-util';
+
 const merge = (arr, lIdx, mid, rIdx, visId, animations) => {
   // start of left sub arr
   let lStart = lIdx;
@@ -16,9 +19,17 @@ const merge = (arr, lIdx, mid, rIdx, visId, animations) => {
     } else {
       let idx = rStart;
       while (idx >= lStart + 1) {
+        // animations.push(
+        //   actionCreators.animateElements(visId, null, [idx, idx - 1])
+        // );
         [arr[idx], arr[idx - 1]] = [arr[idx - 1], arr[idx]];
         idx--;
       }
+
+      animations.push(
+        actionCreators.animateElements(visId, null, null, [rStart, lStart])
+      );
+
       lStart++;
       mid++;
       rStart++;
@@ -40,5 +51,7 @@ const mergeSort = (arr, visId) => {
   const animations = [];
   const result = [...arr];
   mergeSortAux(result, 0, arr.length - 1, visId, animations);
-  return result;
+  return animations;
 };
+
+export default mergeSort;

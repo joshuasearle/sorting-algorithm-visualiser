@@ -46,7 +46,7 @@ export const visualise = () => {
 
 const recursiveTimeout = (dispatch, getState, actions, actionIdx, visId) => {
   setTimeout(() => {
-    if (actionIdx >= actions.length - 1 || getState().currentVisId !== visId) {
+    if (actionIdx > actions.length - 1 || getState().currentVisId !== visId) {
       // if visualisation has ended, or at end of animation sequence, end the visualisation
       dispatch(stopVisualisation());
       return;
@@ -62,11 +62,12 @@ const speedToInterval = (speed) => {
   return 100 - speed + 4; // max interval of 4ms on modern browsers
 };
 
-export const animateElements = (visId, highlights, swap) => {
+export const animateElements = (visId, highlights, swap, shift) => {
   return {
     type: actionTypes.ANIMATE_ELEMENTS,
     visId: visId,
     highlights: highlights,
     swap: swap,
+    shift: shift,
   };
 };

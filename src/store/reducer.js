@@ -28,28 +28,6 @@ const generateList = (state, action) => {
   return objectCombiner(state, { currentList: newList });
 };
 
-const swapElements = (state, action) => {
-  if (action.visId !== state.currentVisId) {
-    return state;
-  }
-  const newList = [...state.currentList];
-  const tmp = newList[action.idx1];
-  newList[action.idx1] = newList[action.idx2];
-  newList[action.idx2] = tmp;
-  return objectCombiner(state, { currentList: newList });
-};
-
-const highlight = (state, action) => {
-  if (action.visId !== state.currentVisId) {
-    return state;
-  }
-  const newList = [...state.currentList];
-  for (let { idx, color } of action.idxColorMap) {
-    newList[idx] = objectCombiner(newList[idx], { color: color });
-  }
-  return objectCombiner(state, { currentList: newList });
-};
-
 const setSpeed = (state, action) => {
   return objectCombiner(state, { speed: action.speed });
 };
@@ -82,7 +60,7 @@ const animateElements = (state, action) => {
   }
   // action: {type: ANIMATE_ELEMENTS, visId: 5, highlights: [{idx: 1, color: 'green'}], swap: [0, 4]}
   // copy list
-  const newList = [...state.currentList];
+  let newList = [...state.currentList];
 
   // change all colors in highlight list
   if (action.highlights) {
@@ -99,6 +77,27 @@ const animateElements = (state, action) => {
     newList[idx2] = tmp;
   }
 
+  if (action.shift) {
+    // shift[0] = idx of el we are moving
+    // shift[1] = idx we are moving el to
+    const [currentIdx, destIdx] = action.shift;
+    if (destIdx === newList.length - 1) {
+      newList = [
+        ...newList.slice(0, destIdx),
+        newList[currentIdx],
+        ...newList.slice(destIdx + 1, currentIdx),
+        newList[destIdx],
+      ];
+    } else if (currentIdx > destIdx) {
+      newList = [
+        ...newList.slice(0, destIdx),
+        newList[currentIdx],
+        ...newList.slice(destIdx, currentIdx),
+        ...newList.slice(currentIdx + 1),
+      ];
+    }
+  }
+
   return objectCombiner(state, { currentList: newList });
 };
 
@@ -108,10 +107,6 @@ const reducer = (state = initialState, action) => {
       return setAlgorithm(state, action);
     case actionTypes.GENERATE_LIST:
       return generateList(state, action);
-    case actionTypes.SWAP_ELEMENTS:
-      return swapElements(state, action);
-    case actionTypes.HIGHLIGHT_ELEMENTS:
-      return highlight(state, action);
     case actionTypes.SET_SPEED:
       return setSpeed(state, action);
     case actionTypes.START_VISUALISATION:

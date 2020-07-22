@@ -6,12 +6,12 @@ const merge = (arr, lIdx, mid, rIdx, visId, animations) => {
   let rStart = mid + 1;
 
   // as both halves are sorted, if this holds, no merge is needed
-  if (arr[mid] <= arr[rStart]) {
+  if (arr[mid].value <= arr[rStart].value) {
     return;
   }
 
   while (lStart <= mid && rStart <= rIdx) {
-    if (arr[lStart] <= arr[rStart]) {
+    if (arr[lStart].value <= arr[rStart].value) {
       lStart++;
     } else {
       let idx = rStart;

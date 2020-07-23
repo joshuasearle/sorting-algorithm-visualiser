@@ -4,6 +4,7 @@ import bubbleSort from './bubble-sort';
 import shakerSort from './shaker-sort';
 import quickSort from './quick-sort';
 import mergeSort from './merge-sort';
+import heapSort from './heap-sort';
 
 const sortingAlgs = {
   'selection-sort': selectionSort,
@@ -12,6 +13,7 @@ const sortingAlgs = {
   'shaker-sort': shakerSort,
   'quick-sort': quickSort,
   'merge-sort': mergeSort,
+  'heap-sort': heapSort,
 };
 
 export default sortingAlgs;

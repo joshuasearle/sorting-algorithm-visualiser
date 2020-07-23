@@ -12,6 +12,7 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 - shaker sort
 - quick sort
 - merge sort
+- heap sort
 
 ### TODO
 
@@ -19,8 +20,8 @@ This app allows you to choose one of many sorting algorithms, as well as the num
 - ~add shaker sort~
 - ~add quick sort~
 - ~add merge sort~
-- add heap sort
-- add radix sort
+- ~add heap sort~
+- ~add radix sort~ can only animate in-place algs
 - ~change the run button so that is says **STOP** when sorting, and you can cancel it~
 - fix the menu bar
 - make the site more responsive

@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5bb098b74ead4c8e3bdc1ac54d2c9dbe",
+    "revision": "02d58f4f6aaeac3a5c7f461b48f998e3",
     "url": "/sorting-algorithm-visualiser/index.html"
   },
   {
-    "revision": "f86ef52aea80ad61357b",
+    "revision": "24a39159f3be6168c5e8",
     "url": "/sorting-algorithm-visualiser/static/css/main.35e13776.chunk.css"
   },
   {
-    "revision": "414bfcaccf16859b39f5",
-    "url": "/sorting-algorithm-visualiser/static/js/2.4fc5d21b.chunk.js"
+    "revision": "966f165ff4ab669606fe",
+    "url": "/sorting-algorithm-visualiser/static/js/2.d7ed3a8d.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/sorting-algorithm-visualiser/static/js/2.4fc5d21b.chunk.js.LICENSE.txt"
+    "url": "/sorting-algorithm-visualiser/static/js/2.d7ed3a8d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f86ef52aea80ad61357b",
-    "url": "/sorting-algorithm-visualiser/static/js/main.22b47d69.chunk.js"
+    "revision": "24a39159f3be6168c5e8",
+    "url": "/sorting-algorithm-visualiser/static/js/main.78a7e9e8.chunk.js"
   },
   {
     "revision": "0d6c7598083f5789f41e",

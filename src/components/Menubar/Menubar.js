@@ -8,6 +8,7 @@ import RunButton from './RunButton/RunButton';
 import SpeedPicker from './SpeedPicker/SpeedPicker';
 import StopButton from './StopButton/StopButton';
 import RandomiseList from './RandomiseList/RandomiseList';
+import ReverseButton from './ReverseButton/ReverseButton';
 
 const Menubar = () => {
   const visId = useSelector((state) => state.currentVisId);
@@ -23,6 +24,7 @@ const Menubar = () => {
         <ElementCountPicker />
         <RandomiseList />
         <SpeedPicker />
+        <ReverseButton />
       </div>
       <div className={classes.ElementCountPicker}></div>
       <div className={classes.RunButton}>{button}</div>

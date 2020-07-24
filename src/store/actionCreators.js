@@ -71,3 +71,9 @@ export const animateElements = (visId, highlights, swap, shift) => {
     shift: shift,
   };
 };
+
+export const reverseList = () => {
+  return {
+    type: actionTypes.REVERSE_LIST,
+  };
+};

@@ -101,6 +101,13 @@ const animateElements = (state, action) => {
   return objectCombiner(state, { currentList: newList });
 };
 
+const reverse = (state, action) => {
+  const reverseSortedList = [...state.currentList].sort(
+    (a, b) => b.value - a.value
+  );
+  return { ...state, currentList: reverseSortedList };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_ALGORITHM:
@@ -115,6 +122,8 @@ const reducer = (state = initialState, action) => {
       return stopVisualisation(state, action);
     case actionTypes.ANIMATE_ELEMENTS:
       return animateElements(state, action);
+    case actionTypes.REVERSE_LIST:
+      return reverse(state, action);
     default:
       return state;
   }

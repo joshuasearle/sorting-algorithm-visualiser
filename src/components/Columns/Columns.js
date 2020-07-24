@@ -7,6 +7,7 @@ import classes from './Columns.module.css';
 const Columns = () => {
   const currentList = useSelector((state) => state.currentList);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   useEffect(() => {
     const windowResizeHandler = () => {
       setWindowWidth(window.innerWidth);

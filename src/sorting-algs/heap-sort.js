@@ -82,6 +82,10 @@ const heapSort = (arr, visId) => {
     heapify(result, i, 0, visId, animations);
   }
 
+  animations.push(
+    sortUtil.getSingleHighlightAction({ idx: 0, color: 'green' }, visId)
+  );
+
   return animations.concat(
     sortUtil.gradualAllColorReverse(arr.length, 'black', visId)
   );

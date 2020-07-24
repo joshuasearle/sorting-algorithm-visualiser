@@ -8,6 +8,7 @@ const SortButton = () => {
   const dispatch = useDispatch();
 
   const onClickHandler = () => {
+    dispatch(actionCreators.stopVisualisation());
     dispatch(actionCreators.instantSort());
   };
 

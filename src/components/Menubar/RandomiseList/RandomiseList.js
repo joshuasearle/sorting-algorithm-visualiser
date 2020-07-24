@@ -13,7 +13,7 @@ const RandomList = () => {
     dispatch(actionCreators.generateList(length));
   };
 
-  return <Button onClick={clickHandler}>RANDOMISE LIST</Button>;
+  return <Button onClick={clickHandler}>RANDOMISE</Button>;
 };
 
 export default RandomList;

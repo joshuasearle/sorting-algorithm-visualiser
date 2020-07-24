@@ -77,3 +77,9 @@ export const reverseList = () => {
     type: actionTypes.REVERSE_LIST,
   };
 };
+
+export const instantSort = () => {
+  return {
+    type: actionTypes.INSTANT_SORT,
+  };
+};

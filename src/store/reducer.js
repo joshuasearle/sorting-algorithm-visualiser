@@ -108,6 +108,11 @@ const reverse = (state, action) => {
   return { ...state, currentList: reverseSortedList };
 };
 
+const instantSort = (state, action) => {
+  const sortedList = [...state.currentList].sort((a, b) => a.value - b.value);
+  return { ...state, currentList: sortedList };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_ALGORITHM:
@@ -124,6 +129,8 @@ const reducer = (state = initialState, action) => {
       return animateElements(state, action);
     case actionTypes.REVERSE_LIST:
       return reverse(state, action);
+    case actionTypes.INSTANT_SORT:
+      return instantSort(state, action);
     default:
       return state;
   }

@@ -11,7 +11,7 @@ const RunButton = () => {
     dispatch(actionCreators.visualise());
   };
 
-  return <Button onClick={buttonPressHandler}>RUN SORT</Button>;
+  return <Button onClick={buttonPressHandler}>VISUALISE</Button>;
 };
 
 export default RunButton;

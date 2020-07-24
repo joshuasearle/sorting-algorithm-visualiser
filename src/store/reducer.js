@@ -11,8 +11,8 @@ const randomListGenerator = (length) => {
 };
 
 const initialState = {
-  algorithm: 'selection-sort',
-  currentList: randomListGenerator(20),
+  algorithm: 'heap-sort',
+  currentList: randomListGenerator(80),
   speed: 50,
   nextVisId: 0,
   currentVisId: null,

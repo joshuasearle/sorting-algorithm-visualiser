@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import FormLabel from '../../inputs/FormLabel/FormLabel';
-import NumberInput from '../../inputs/NumberInput/NumberInput';
+import Slider from '../../inputs/Slider/Slider';
 import * as actionCreators from '../../../store/actionCreators';
 
 const ElementCountPicker = () => {
@@ -21,9 +21,11 @@ const ElementCountPicker = () => {
   return (
     <div>
       <FormLabel>Element Count</FormLabel>
-      <NumberInput
+      <Slider
         disabled={visualising}
         value={elementCount}
+        min={1}
+        max={200}
         onChange={elementCountChangeHandler}
       />
     </div>

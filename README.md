@@ -1,6 +1,6 @@
 # Sorting Algorithm Visualiser
 
-[click here to use it](https://joshuasearle.github.io/sorting-algorithm-visualiser/){target="\_blank"}
+<a href="https://joshuasearle.github.io/sorting-algorithm-visualiser/" target="_blank">click here to use it</a>
 
 This app lets you visualise your favourite sorting algorithms.
 You can pick the speed you'd like the animations to be, as well as change the speed mid visualisation.

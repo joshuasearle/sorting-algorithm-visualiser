@@ -2,7 +2,7 @@ import * as actionCreators from '../store/actionCreators';
 import * as sortUtil from './sort-util';
 
 const merge = (arr, lIdx, mid, rIdx, visId, animations) => {
-  let initMid = mid;
+  const lastMerge = lIdx === 0 && mid === Math.floor((arr.length - 1) / 2);
 
   // start of left sub arr
   let lStart = lIdx;
@@ -27,8 +27,8 @@ const merge = (arr, lIdx, mid, rIdx, visId, animations) => {
       { idx: rStart, color: 'black' },
     ];
 
-    if (lIdx === 0 && initMid === Math.floor((arr.length - 1) / 2)) {
-      console.log('lsjdflsk');
+    // if last merge
+    if (lastMerge) {
       highlights = null;
     }
 
@@ -57,6 +57,13 @@ const merge = (arr, lIdx, mid, rIdx, visId, animations) => {
       rStart++;
     }
   }
+  if (lastMerge) {
+    for (let i = lStart; i < arr.length; i++) {
+      animations.push(
+        sortUtil.getSingleHighlightAction({ idx: i, color: 'green' }, visId)
+      );
+    }
+  }
 };
 
 const mergeSortAux = (arr, lIdx, rIdx, visId, animations) => {
@@ -74,18 +81,14 @@ const mergeSort = (arr, visId) => {
   animations.push(sortUtil.instantAllColor(arr.length, 'black'));
   const result = [...arr];
   mergeSortAux(result, 0, arr.length - 1, visId, animations);
-  animations.push(
-    actionCreators.animateElements(visId, [
-      {
-        idx: arr.length - 1,
-        color: 'green',
-      },
-    ])
-  );
+
   animations = [
     ...animations,
     ...sortUtil.gradualAllColorReverse(arr.length, 'black', visId),
   ];
+
+  // console.log(animations);
+
   return animations;
 };
 

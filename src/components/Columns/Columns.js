@@ -18,8 +18,14 @@ const Columns = () => {
     };
   });
 
-  const elementWidth = Math.floor((windowWidth * 0.8) / currentList.length);
-  const gapWidth = Math.floor((windowWidth * 0.2) / (currentList.length + 1));
+  const percentOfTheWindow = 0.9;
+
+  const elementWidth = Math.floor(
+    (windowWidth * 0.8 * percentOfTheWindow) / currentList.length
+  );
+  const gapWidth = Math.floor(
+    (windowWidth * 0.2 * percentOfTheWindow) / (currentList.length + 1)
+  );
   const residual =
     windowWidth -
     (elementWidth * currentList.length + gapWidth * (currentList.length + 1));

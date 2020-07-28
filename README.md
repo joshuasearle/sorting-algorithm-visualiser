@@ -38,10 +38,12 @@ You can also manually stop the visualisation, so you can mix and match algorithm
 - ~add merge sort~
 - ~add heap sort~
 - ~change the run button so that is says **STOP** when sorting, and you can cancel it~
-- fix the menu bar
-- make the site more responsive
+- ~fix the menu bar~
+- ~make the site more responsive~
 - ~add **Randomise List** button~
 - ~refactor **visualise** action~
 - ~refactor repeated animation code in sorting algs~
 - ~condense animation actions~
 - ~add reverse list button~
+- add shell sort
+- make a max element count based on window size

@@ -12,7 +12,7 @@ const ReverseButton = () => {
     dispatch(actionCreators.reverseList());
   };
 
-  return <Button onClick={clickHandler}>REVERSE</Button>;
+  return <Button onClick={clickHandler}>REVERSE SORT</Button>;
 };
 
 export default ReverseButton;

@@ -31,37 +31,6 @@
   margin: 0;
   padding: 0;
 }
-/* .Title {
-  grid-area: title;
-}
-
-.AlgPicker {
-  grid-area: alg-picker;
-}
-
-.ElCount {
-  grid-area: el-count;
-}
-
-.Speed {
-  grid-area: speed;
-}
-
-.Reverse {
-  grid-area: do-reverse;
-}
-
-.Instant {
-  grid-area: instant;
-}
-
-.Randomise {
-  grid-area: randomise;
-}
-
-.Visualise {
-  grid-area: visualise;
-} */
 
 @media (min-width: 600px) {
   .Buttons {

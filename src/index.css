@@ -7,6 +7,10 @@ html {
 *,
 *:before,
 *:after {
-  font-family: 'Solway', serif;
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
+}
+
+button {
+  font-weight: 600;
 }

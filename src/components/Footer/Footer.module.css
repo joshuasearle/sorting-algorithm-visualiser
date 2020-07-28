@@ -1,0 +1,13 @@
+.Footer {
+  background-color: #5e007d;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.Image {
+  margin: 1em;
+}

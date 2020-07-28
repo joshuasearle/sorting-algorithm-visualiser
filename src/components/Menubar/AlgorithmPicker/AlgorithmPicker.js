@@ -22,7 +22,7 @@ const AlgorithmPicker = () => {
 
   return (
     <div>
-      <FormLabel>Algorithms</FormLabel>
+      <FormLabel>Algorithm</FormLabel>
       <DropdownMenu
         value={algorithm}
         options={options}

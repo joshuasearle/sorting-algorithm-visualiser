@@ -17,26 +17,32 @@ const Menubar = () => {
   const button = visId === null ? <RunButton /> : <StopButton />;
   return (
     <div className={classes.Menubar}>
-      <h1 className={classes.Title}>Sorting Algorithm Visualiser</h1>
-      <div className={classes.AlgPicker}>
-        <AlgorithmPicker />
+      <div className={classes.Title}>
+        <h1>Sorting Algorithm Visualiser</h1>
       </div>
-      <div className={classes.ElCount}>
-        <ElementCountPicker />
+      <div className={classes.Options}>
+        <div className={classes.AlgPicker}>
+          <AlgorithmPicker />
+        </div>
+        <div className={classes.ElCount}>
+          <ElementCountPicker />
+        </div>
+        <div className={classes.Speed}>
+          <SpeedPicker />
+        </div>
       </div>
-      <div className={classes.Speed}>
-        <SpeedPicker />
+      <div className={classes.Buttons}>
+        <div className={classes.Reverse}>
+          <ReverseButton />
+        </div>
+        <div className={classes.Instant}>
+          <SortButton />
+        </div>
+        <div className={classes.Randomise}>
+          <RandomiseList />
+        </div>
+        <div className={classes.Visualise}>{button}</div>
       </div>
-      <div className={classes.Reverse}>
-        <ReverseButton />
-      </div>
-      <div className={classes.Instant}>
-        <SortButton />
-      </div>
-      <div className={classes.Randomise}>
-        <RandomiseList />
-      </div>
-      <div className={classes.Visualise}>{button}</div>
     </div>
   );
 };

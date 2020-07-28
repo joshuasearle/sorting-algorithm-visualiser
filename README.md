@@ -16,8 +16,8 @@ You can also manually stop the visualisation, so you can mix and match algorithm
 - heap sort on a sorted list
 - heap sort on a reverse sorted list
 - merge sort on a reverse sorted list
-- shaker sort on a reverse sorted list
-- shaker sort on a sorted list
+- shaker sort on a reverse sorted list (pick small element count)
+- shaker sort on a sorted list (pick small element count
 - quick sort for a few partitions, then stop the sort and switch to insertion sort for an efficient mix of algorithms
 
 ### Currently Available Algorithms

@@ -6,7 +6,7 @@ import classes from './Footer.module.css';
 const Footer = () => {
   return (
     <div className={classes.Footer}>
-      <p>See the source code on github</p>
+      <p>See the source code on GitHub</p>
       <a href='https://github.com/joshuasearle/sorting-algorithm-visualiser'>
         <img className={classes.Image} src={Logo} alt='GitHub Logo'></img>
       </a>

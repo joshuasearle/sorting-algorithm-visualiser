@@ -3,81 +3,59 @@
   overflow: hidden;
   color: white;
   display: grid;
-  grid-template-rows: auto auto auto auto;
-}
-
-.Title {
-  text-align: center;
-  grid-row: 1 / 2;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .Menubar div {
-  margin: auto;
-  padding: 0.3em 1em;
-  width: max-content;
+  margin: 0.4em;
 }
 
-.AlgorithmPicker {
+.Title {
+  grid-row: 1 / 2;
+  grid-column: 1 / 3;
+  text-align: center;
+}
+
+.AlgPicker {
   grid-row: 2 / 3;
+  grid-column: 1 / 3;
+  text-align: center;
 }
 
-.ElementCountPicker {
+.ElCount {
   grid-row: 3 / 4;
+  grid-column: 1 / 3;
+  text-align: center;
 }
 
-.RunButton {
+.Speed {
   grid-row: 4 / 5;
+  grid-column: 1 / 3;
+  text-align: center;
 }
 
-@media (min-width: 800px) {
-  .Menubar {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
-  }
-
-  .Title {
-    grid-column: 1 / 3;
-  }
-
-  .AlgorithmPicker {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-  }
-
-  .ElementCountPicker {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-  }
-
-  .RunButton {
-    grid-column: 1 / 3;
-    grid-row: 3 / 4;
-  }
+.Reverse {
+  grid-row: 5 / 6;
+  grid-column: 1 / 3;
+  text-align: center;
 }
 
-@media (min-width: 1100px) {
-  .Menubar {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-  }
+.Instant {
+  grid-row: 6 / 7;
+  grid-column: 1 / 3;
+  text-align: center;
+}
 
-  .Title {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-  }
+.Randomise {
+  grid-row: 7 / 8;
+  grid-column: 1 / 3;
+  text-align: center;
+}
 
-  .AlgorithmPicker {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-  }
-
-  .ElementCountPicker {
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
-  }
-
-  .RunButton {
-    grid-column: 4 / 5;
-    grid-row: 1 / 2;
-  }
+.Visualise {
+  grid-row: 8 / 9;
+  grid-column: 1 / 3;
+  text-align: center;
 }

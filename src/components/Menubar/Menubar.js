@@ -18,18 +18,25 @@ const Menubar = () => {
   return (
     <div className={classes.Menubar}>
       <h1 className={classes.Title}>Sorting Algorithm Visualiser</h1>
-      <div className={classes.AlgorithmPicker}>
+      <div className={classes.AlgPicker}>
         <AlgorithmPicker />
       </div>
-      <div className={classes.ElementCountPicker}>
+      <div className={classes.ElCount}>
         <ElementCountPicker />
-        <RandomiseList />
+      </div>
+      <div className={classes.Speed}>
         <SpeedPicker />
+      </div>
+      <div className={classes.Reverse}>
         <ReverseButton />
+      </div>
+      <div className={classes.Instant}>
         <SortButton />
       </div>
-      <div className={classes.ElementCountPicker}></div>
-      <div className={classes.RunButton}>{button}</div>
+      <div className={classes.Randomise}>
+        <RandomiseList />
+      </div>
+      <div className={classes.Visualise}>{button}</div>
     </div>
   );
 };

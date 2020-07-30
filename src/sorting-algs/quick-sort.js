@@ -39,10 +39,27 @@ const partition = (arr, visId, animations, lo, hi) => {
   return lastElSmallerThanPivot + 1;
 };
 
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const partitionArr = (arr, visId, animations, lo, hi) => {
+  const randomPivot = getRandomInt(lo, hi);
+  const tmp = arr[hi];
+  arr[hi] = arr[randomPivot];
+  arr[randomPivot] = tmp;
+  animations.push(
+    actionCreators.animateElements(visId, null, [hi, randomPivot])
+  );
+  return partition(arr, visId, animations, lo, hi);
+};
+
 const quickSortAux = (arr, visId, animations, lo, hi) => {
   if (lo < hi) {
     // partition
-    const pivIdx = partition(arr, visId, animations, lo, hi);
+    const pivIdx = partitionArr(arr, visId, animations, lo, hi);
 
     // sort each side of the partition
     quickSortAux(arr, visId, animations, lo, pivIdx - 1);

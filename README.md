@@ -13,6 +13,7 @@ You can also manually stop the visualisation, so you can mix and match algorithm
 
 ### Cool Sorting Algorithm Combos
 
+- quick sort on a reverse sorted list
 - heap sort on a sorted list
 - heap sort on a reverse sorted list
 - merge sort on a reverse sorted list
@@ -26,7 +27,7 @@ You can also manually stop the visualisation, so you can mix and match algorithm
 - insertion sort
 - bubble sort
 - shaker sort
-- quick sort
+- quick sort (w/ random pivot)
 - merge sort
 - heap sort
 

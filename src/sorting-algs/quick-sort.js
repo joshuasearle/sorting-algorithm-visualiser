@@ -51,7 +51,19 @@ const partitionArr = (arr, visId, animations, lo, hi) => {
   arr[hi] = arr[randomPivot];
   arr[randomPivot] = tmp;
   animations.push(
+    actionCreators.animateElements(visId, [
+      { idx: hi, color: 'green' },
+      { idx: randomPivot, color: 'green' },
+    ])
+  );
+  animations.push(
     actionCreators.animateElements(visId, null, [hi, randomPivot])
+  );
+  animations.push(
+    actionCreators.animateElements(visId, [
+      { idx: hi, color: 'black' },
+      { idx: randomPivot, color: 'black' },
+    ])
   );
   return partition(arr, visId, animations, lo, hi);
 };

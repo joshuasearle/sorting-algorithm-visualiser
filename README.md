@@ -48,3 +48,4 @@ You can also manually stop the visualisation, so you can mix and match algorithm
 - ~add reverse list button~
 - add shell sort
 - make a max element count based on window size
+- rework button design

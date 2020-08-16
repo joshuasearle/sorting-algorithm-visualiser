@@ -30,6 +30,14 @@ const bubbleSort = (arr, visId) => {
       );
     }
   }
+  animations.push(
+    actionCreators.animateElements(
+      visId,
+      [{ idx: 0, color: 'green' }],
+      null,
+      null
+    )
+  );
   animations = [
     ...animations,
     ...sortUtil.gradualAllColorReverse(arr.length, 'black', visId),
